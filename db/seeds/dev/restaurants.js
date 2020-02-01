@@ -1,4 +1,5 @@
-const locations = require('../../locationsData');
+
+const locations = require('../../../locationsData');
 
 const createCity = async (knex, location) => {
 
@@ -12,7 +13,9 @@ const createCity = async (knex, location) => {
   let restaurantPromises = location.restaurants.map((restaurant) => {
     console.log(restaurant)
     return createRestaurant(knex, {
-      restaurant,
+      name: restaurant.name,
+      restaurantType: restaurant.restaurantType,
+      address: restaurant.address,
       restaurant_id: cityId[0]
     })
   });

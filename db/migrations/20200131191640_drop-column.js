@@ -9,6 +9,8 @@ exports.up = function(knex) {
   
 exports.down = function(knex) {
     return knex.schema.table('restaurants', (table) => {
-    table.dropColumn('restaurant')
+        table.dropColumn('name');
+        table.dropColumn('restaurantType');
+        table.dropColumn('address');
     });
 };
