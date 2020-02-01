@@ -42,6 +42,7 @@ app.post('/api/v1/cities', async (request, response) => {
 
 });
 
+
 app.get('/api/v1/restaurants', async (request, response) => {
     try {
       const restaurants = await database('restaurants').select();
@@ -59,6 +60,21 @@ app.get('/api/v1/restaurants/:id', async (request, response) => {
       response.status(500).json({ error });
     }
 });
+
+app.post('/api/v1/restaurants', async (request, response) => {
+    const restaurant = request.body;
+    for(let restaurantInfo of ['name', 'restaurantType', 'address']) {
+      !restaurant[restaurantInfo] ? response.status(422).send({ error: `Expected format: { name: <String>, restaurantType: <String>, address: <String> }. You're missing a "${restaurantInfo}" property.` }) : '';
+    }
+  
+    try {
+      const id = await database('restaurants').insert(restaurant, 'id');
+      response.status(201).json({ id });
+    }catch(error){
+      response.status(500).json({ error })
+    }
+  
+  });
 
 app.listen(app.get('port'), () => {
     console.log(`Server is running on http://localhost:${app.get('port')}`);
