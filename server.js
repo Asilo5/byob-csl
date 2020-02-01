@@ -70,11 +70,20 @@ app.post('/api/v1/restaurants', async (request, response) => {
     try {
       const id = await database('restaurants').insert(restaurant, 'id');
       response.status(201).json({ id });
-    }catch(error){
+    } catch(error){
       response.status(500).json({ error })
     }
   
-  });
+});
+
+app.delete('/api/v1/restaurants/:id', async (request, response) => {
+    try {
+        const restaurant = await database('restaurants').where('id', request.params.id).del();
+        restaurant.length ? response.status(404).json({error: `Could not find restaurant with id ${request.params.id}`}) : response.status(200).json(restaurant);
+        } catch(error) {
+        response.status(500).json({ error });
+    }
+});
 
 app.listen(app.get('port'), () => {
     console.log(`Server is running on http://localhost:${app.get('port')}`);
