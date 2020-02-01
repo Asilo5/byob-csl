@@ -85,6 +85,14 @@ app.delete('/api/v1/restaurants/:id', async (request, response) => {
     }
 });
 
+app.get('/', (request, response) => {
+    response.status(200).send("Epale its all working!!");
+  });
+
+app.get('*', (request, response) => {
+    response.status(404).send('404: Not found');
+});
+
 app.listen(app.get('port'), () => {
     console.log(`Server is running on http://localhost:${app.get('port')}`);
   });
