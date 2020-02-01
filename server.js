@@ -20,9 +20,32 @@ app.get('/api/v1/cities', async (request, response) => {
     } catch(error) {
       response.status(500).json({ error });
     }
+});
+
+app.get('/api/v1/cities/:id', async (request, response) => {
+ 
+    try {
+      const city = await database('cities').where('id', request.params.id).select();
+      city.length ? response.status(200).json(city) : response.status(404).json({error: `Could not find paper with id ${request.params.id}`});
+    } catch(error) {
+      response.status(500).json({ error });
+    }
+});
+
+  app.get('/api/v1/restaurants', async (request, response) => {
+    const restaurant = request.body;
+    console.log('request param', restaurant)
+
+    try {
+      const restaurants = await database('restaurants').select();
+      console.log(restaurants)
+      response.status(200).json(restaurants);
+    } catch(error) {
+      response.status(500).json({ error });
+    }
   });
 
 
 app.listen(app.get('port'), () => {
-    console.log(`Server is running on http://localhost:${app.get('port')}.`);
+    console.log(`Server is running on http://localhost:${app.get('port')}`);
   });
