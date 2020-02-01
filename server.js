@@ -3,8 +3,11 @@ const configuration = require('./knexfile')[environment];
 const database = require('knex')(configuration);
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
 app.set('port', process.env.PORT || 3001);
+app.use(express.json());
+app.use(cors());
 
 app.get('/api/v1/cities', async (request, response) => {
     const city = request.body;
