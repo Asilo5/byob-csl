@@ -10,12 +10,8 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/api/v1/cities', async (request, response) => {
-    const city = request.body;
-    console.log('request param', city)
-
     try {
       const cities = await database('cities').select();
-      console.log(cities)
       response.status(200).json(cities);
     } catch(error) {
       response.status(500).json({ error });
@@ -23,7 +19,6 @@ app.get('/api/v1/cities', async (request, response) => {
 });
 
 app.get('/api/v1/cities/:id', async (request, response) => {
- 
     try {
       const city = await database('cities').where('id', request.params.id).select();
       city.length ? response.status(200).json(city) : response.status(404).json({error: `Could not find paper with id ${request.params.id}`});
@@ -32,10 +27,7 @@ app.get('/api/v1/cities/:id', async (request, response) => {
     }
 });
 
-  app.get('/api/v1/restaurants', async (request, response) => {
-    const restaurant = request.body;
-    console.log('request param', restaurant)
-
+app.get('/api/v1/restaurants', async (request, response) => {
     try {
       const restaurants = await database('restaurants').select();
       console.log(restaurants)
@@ -43,7 +35,16 @@ app.get('/api/v1/cities/:id', async (request, response) => {
     } catch(error) {
       response.status(500).json({ error });
     }
-  });
+});
+
+app.get('/api/v1/restaurants/:id', async (request, response) => {
+    try {
+      const restaurant = await database('restaurants').where('id', request.params.id).select();
+      restaurant.length ? response.status(200).json(restaurant) : response.status(404).json({error: `Could not find paper with id ${request.params.id}`});
+    } catch(error) {
+      response.status(500).json({ error });
+    }
+});
 
 
 app.listen(app.get('port'), () => {
