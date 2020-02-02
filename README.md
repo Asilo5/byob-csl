@@ -26,10 +26,10 @@ Make sure that server is running on ``` http://localhost:3001 ```
 
 | url | verb | options | sample response |
 | ----|------|---------|---------------- |
-| `https://byob2.herokuapp.com/` | GET | not needed | Array of all existing cities: `[{"id": 21,"city": "Berlin","avgVegans": "80,000"},...]` |
-| `https://byob2.herokuapp.com/` | GET | not needed | Array of all existing restaurant: `[{"id": 59,"restaurant_id": 21,"name": "Cat Tuong","restaurantType": "Vietnamese vegan cuisine ","address": "Kastanienallee 89, Berlin, Germany, 10435"}, ...]` |
-| `https://byob2.herokuapp.com/` | GET | not needed | Chosen city: `{"id": 21,"city": "Berlin","avgVegans": "80,000"}` |
-| `https://byob2.herokuapp.com/` | GET | not needed | Chosen restaurant: ` {"id": 59,"restaurant_id": 21,"name": "Cat Tuong","restaurantType": "Vietnamese vegan cuisine ","address": "Kastanienallee 89, Berlin, Germany, 10435"}` |
-| `https://byob2.herokuapp.com/` | POST | `{ city: <String>, avgVegans: <String> }` | New City: `{ city: <String>, avgVegans: <String> }` |
-| `https://byob2.herokuapp.com/` | POST | `{ name: <String>, restaurantType: <String>, address: <String> }` | New Restaurant: `{ name: <String>, restaurantType: <String>, address: <String> }` |
+| `https://byob2.herokuapp.com/api/v1/cities` | GET | not needed | Array of all existing cities: `[{"id": 21,"city": "Berlin","avgVegans": "80,000"},...]` |
+| `https://byob2.herokuapp.com/api/v1/restaurants` | GET | not needed | Array of all existing restaurant: `[{"id": 59,"restaurant_id": 21,"name": "Cat Tuong","restaurantType": "Vietnamese vegan cuisine ","address": "Kastanienallee 89, Berlin, Germany, 10435"}, ...]` |
+| `https://byob2.herokuapp.com/api/v1/cities/:id` | GET | not needed | Chosen city: `{"id": 21,"city": "Berlin","avgVegans": "80,000"}` |
+| `https://byob2.herokuapp.com/api/v1/restaurants/:id` | GET | not needed | Chosen restaurant: ` {"id": 59,"restaurant_id": 21,"name": "Cat Tuong","restaurantType": "Vietnamese vegan cuisine ","address": "Kastanienallee 89, Berlin, Germany, 10435"}` |
+| `https://byob2.herokuapp.com/api/v1/cities` | POST | `{ city: <String>, avgVegans: <String> }` | New City: `{ city: "Berlin", avgVegans: "80,000" }` |
+| `https://byob2.herokuapp.com/api/v1/restaurants` | POST | `{ name: <String>, restaurantType: <String>, address: <String> }` | New Restaurant: `{ name: "Cat Tuong", restaurantType: "Vietnamese vegan cuisine ", address: "Kastanienallee 89, Berlin, Germany, 10435" }` |
 | `https://byob2.herokuapp.com/` | DELETE | not needed | Response: `1` |
