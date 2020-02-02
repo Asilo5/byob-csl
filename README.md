@@ -1,6 +1,6 @@
 # BYOB
 
-BYOB allows developers interested in getting information of vegan restaurants from different cities around the world.
+BYOB allows developers interested in getting information of vegan restaurants from different cities around the world that can then be used to build websites where vegans can find vegan restaurants around their city.
 
 ## Created by:
 [Amanda Consuelo Sierra](https://github.com/Asilo5)
