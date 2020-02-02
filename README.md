@@ -32,4 +32,4 @@ Make sure that server is running on ``` http://localhost:3001 ```
 | `https://byob2.herokuapp.com/api/v1/restaurants/:id` | GET | not needed | Chosen restaurant: ` {"id": 59,"restaurant_id": 21,"name": "Cat Tuong","restaurantType": "Vietnamese vegan cuisine ","address": "Kastanienallee 89, Berlin, Germany, 10435"}` |
 | `https://byob2.herokuapp.com/api/v1/cities` | POST | `{ city: <String>, avgVegans: <String> }` | New City: `{ city: "Berlin", avgVegans: "80,000" }` |
 | `https://byob2.herokuapp.com/api/v1/restaurants` | POST | `{ name: <String>, restaurantType: <String>, address: <String> }` | New Restaurant: `{ name: "Cat Tuong", restaurantType: "Vietnamese vegan cuisine ", address: "Kastanienallee 89, Berlin, Germany, 10435" }` |
-| `https://byob2.herokuapp.com/` | DELETE | not needed | Response: `1` |
+| `https://byob2.herokuapp.com/api/v1/restaurants/:id` | DELETE | not needed | Response: `1` |
